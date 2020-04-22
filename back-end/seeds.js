@@ -1,20 +1,20 @@
-const {User, db} = require ('./models/User') // you need the connection to the database and Campus model
+const User = require('./models/User').User
 
-const seed = async () => {
-  await db.sync({force: true}) //sync to your database!
+User.sync() // this syncs table with db (create if not created)
+.then(() => User.destroy({where: {}}))
+.then(() => users.forEach(user => User.create(user)))
 
-  const anam = await User.create({
-    username: 'anamsoomro',
-    password: 'abc',
-    email: 'anamsoomroed@gmail.com'
-  })
-  const sik = await User.create({
-    username: 'sikendershahid',
-    password:'abc', // in real action I should store the hashed password
-    email: 'sikendershahid91@gmail.com'
-  })
-  db.close() //close your db connection else the connection stays alive else your process hangs.
-  console.log('Seed Successful!') //Have a prompt to let you know everything is working correctly!
-}
+const users = [
+    {
+      username: 'anamsoomro',
+      password: 'abc', // in real flow I should store the hashed password
+      email: 'anamsoomroed@gmail.com'
+    },
+    {
+      username: 'sikendershahid',
+      password:'abc', 
+      email: 'sikendershahid91@gmail.com'
+    }
+]
 
-seed() //initialize the sync!
+

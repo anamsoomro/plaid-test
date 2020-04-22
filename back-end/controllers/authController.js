@@ -1,6 +1,8 @@
 const bcrypt = require("bcrypt")
 const pry = require('pryjs')
 const jwt = require("jsonwebtoken")
+const User = require("../models/User").User
+// const { User } = require("./models/User")
 
 
 const users = []
@@ -8,10 +10,15 @@ const users = []
 const signUp = async (req, res) => {
   try {
     const hashedPassword = await bcrypt.hash(req.body.password, 10) // 10 salt rounds
-    const user = { name: req.body.name, password: hashedPassword }
-    users.push(user)
+    const user = { username: req.body.username, password: hashedPassword, email: req.body.email }
+    // users.push(user)
+    let newUser = await User.create(user)
+    // 500 internal server error. 
+    // User.create is not a function. so maybe issue with my sequelize
+    // no, it was with destructurinig. if export multiple make sure to import one
     res.status(201).json(
-      {user: user}
+      {username: newUser.username, email: newUser.email}
+      // {user: newUser}
     ) // status 201 succes created also send me back a user
   } catch {
     res.status(500).send()
@@ -22,7 +29,7 @@ const login = async (req, res) => {
   console.log("users [] at login", users) 
   const user = users.find(user => user.name === req.body.name) 
   if (user == null) {
-    return res.status(400).send('cant find user') // idk why this returns even when match
+    return res.status(400).send('cant find user') 
   }
   try {
     if( await bcrypt.compare(req.body.password, user.password)) { //check what was sent against your memory 

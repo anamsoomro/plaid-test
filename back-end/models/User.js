@@ -1,5 +1,6 @@
 const Sequelize = require('sequelize')
 const {STRING} = Sequelize
+// const { Sequelize, DataTypes } = require('sequelize');
 
 
 const db = new Sequelize({
@@ -25,7 +26,6 @@ module.exports = {
   db
 }
 
-// has init has async await 
-// https://medium.com/@zhhjoseph/getting-started-with-sequelize-dd6045f366e6
-db.sync()
-// db.sync({ force: false})
+// module.exports = User
+
+db.sync() // this syncs db connection with db
