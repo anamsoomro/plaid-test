@@ -1,0 +1,44 @@
+### AUTHORIZATION 
+
+# POST http://localhost:8000/login
+
+# "Content-Type": "application/json"
+
+# {
+#   "username": "anam"
+# }
+
+# ###
+
+# GET http://localhost:8000/testAuth
+
+# ###
+
+# GET http://localhost:8000/testAuth
+# Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1ODc0ODM2MDN9.PP6xDhmntTmz705SPeE5O3gYAOuHHALCXRuKL2gwEKw
+
+### GET USERS
+
+GET http://localhost:8000/users
+
+### MAKE A NEW USER
+POST http://localhost:8000/users
+Content-Type: application/json
+
+{
+  "name": "anam",
+  "password": "password"
+}
+
+### 
+
+POST http://localhost:8000/users/login
+
+Content-Type: application/json
+
+{
+  "name": "anam",
+  "password": "password"
+}
+
+###

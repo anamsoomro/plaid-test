@@ -10,13 +10,24 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^4.0.1",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
     "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
     "moment": "^2.24.0",
     "nodemon": "^2.0.3",
+    "pg": "^8.0.2",
+    "pg-hstore": "^2.3.3",
     "plaid": "^4.11.0",
-    "pryjs": "^1.0.3"
+    "pryjs": "^1.0.3",
+    "react-redux": "^7.2.0",
+    "sequelize": "^5.21.6",
+    "sqlite3": "^4.1.1"
   },
-  "proxy": "http://localhost:8000"
+  "proxy": "http://localhost:8000",
+  "devDependencies": {
+    "sequelize-cli": "^5.5.1"
+  }
 }
